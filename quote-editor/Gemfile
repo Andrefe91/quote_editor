@@ -68,3 +68,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "solargraph", "~> 0.50.0"
+
+gem "ruby-lsp", "~> 0.14.5"
+
+gem "ruby-lsp-rails", "~> 0.3.2"
