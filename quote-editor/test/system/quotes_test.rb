@@ -51,8 +51,7 @@ class QuotesTest < ApplicationSystemTestCase
     click_on "Update quote"
 
     # Back at the index page we can see the updated title with "Updated quote"
-    assert_selector "h1", text: "Quotes"
-    assert_text "Updated quote"
+    assert_selector "h1", text: "Updated quote"
   end
 
   test "Deleting a quote" do
