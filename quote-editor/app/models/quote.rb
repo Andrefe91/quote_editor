@@ -2,6 +2,8 @@ class Quote < ApplicationRecord
 
   validates :name, presence: true
 
+  belongs_to :company
+
   scope :ordered, -> { order(created_at: :desc)}
 
   #Remmember, "puppies" can be anything, this is the name of the channel
@@ -19,6 +21,5 @@ class Quote < ApplicationRecord
 
 
   #Syntactic sugar for the three callbacks from before:
-
   broadcasts_to ->(quote) { "puppies" }, inserts_by: :prepend
 end
