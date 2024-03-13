@@ -1,4 +1,5 @@
 <%# Puppies can be anything, this is esentially the name of the channel streaming %>
+<%# Remember, the "current_company.name + puppies" is to give each channel a distinct name %>
 <%= turbo_stream_from (current_company.name + "puppies") %>
 
 <main class="container">
@@ -14,6 +15,7 @@
   <%= turbo_frame_tag Quote.new %>
 
   <%= turbo_frame_tag "quotes" do%>
+    <%= render "quotes/empty_state" %>
     <%= render @quotes %>
   <% end %>
 
