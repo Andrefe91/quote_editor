@@ -20,7 +20,8 @@ class QuotesController < ApplicationController
     if @quote.save
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: "Quote was sucessfully created." }
-        format.turbo_stream #Redirect the response to the Turbo Stream view of the same name
+        format.turbo_stream { flash.now[:notice] = "Quote was sucessfully created." }
+        #Redirect the response to the Turbo Stream view of the same name
         #allowing for partial page updates without a full page reload.
       end
     else
@@ -36,7 +37,7 @@ class QuotesController < ApplicationController
     if @quote.update(quote_params)
       respond_to do |format|
         format.html { redirect_to quote_path, notice: "Quote was sucessfully updated." }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Quote was sucessfully updated." }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -48,7 +49,7 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to quotes_path, notice: "Quote was sucessfully deleted." }
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "Quote was sucessfully deleted." }
     end
   end
 

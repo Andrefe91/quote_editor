@@ -3,8 +3,13 @@
 <%# It can also be written like this: %>
 <%# turbo_stream.prepend "quotes", @quote %>
 
+<%# This first line tells Turbo to prepend to the Turbo frame with id quotes and the partial with also a local %>
+
 <%# In ruby on rails, this two expressions are equivalent: %>
 <%# render partial: "quotes/quote", locals: { quote: @quote } %>
 <%# render @quote %>
 
+<%# -> This second line, tells Turbo to update the Turbo Frame with id new_quote with empty content %>
+<%# In other words, once the quote it's created, to empty the form div of the new quote %>
 <%= turbo_stream.update Quote.new, "" %>
+<%= render_turbo_stream_flash_messages %>
