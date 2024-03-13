@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class QuotesTest < ApplicationSystemTestCase
   setup do
+    login_as users(:accountant) #This way, the test can procede with the user "accountant" logged in
     @quote = Quote.ordered.first
   end
 

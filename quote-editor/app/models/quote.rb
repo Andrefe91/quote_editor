@@ -21,5 +21,6 @@ class Quote < ApplicationRecord
 
 
   #Syntactic sugar for the three callbacks from before:
-  broadcasts_to ->(quote) { "puppies" }, inserts_by: :prepend
+  broadcasts_to ->(quote) { quote.company.name + "puppies"}, inserts_by: :prepend
+  #The array [quote.company, "puppies"] is used to uniquely identify the broadcasting channel.
 end

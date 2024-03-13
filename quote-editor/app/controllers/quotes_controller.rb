@@ -3,7 +3,7 @@ class QuotesController < ApplicationController
 
 
   def index
-    @quotes = Quote.all.ordered
+    @quotes = current_company.quotes.ordered
   end
 
   def show
@@ -15,12 +15,13 @@ class QuotesController < ApplicationController
   end
 
   def create
-    @quote = Quote.new(quote_params)
+    @quote = current_company.quotes.build(quote_params)
 
     if @quote.save
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: "Quote was sucessfully created." }
-        format.turbo_stream
+        format.turbo_stream #Redirect the response to the Turbo Stream view of the same name
+        #allowing for partial page updates without a full page reload.
       end
     else
       render :new, status: :unprocessable_entity
@@ -54,7 +55,7 @@ class QuotesController < ApplicationController
   private
 
   def set_quote
-    @quote = Quote.find(params[:id])
+    @quote = current_company.quotes.find(params[:id])
   end
 
   def quote_params

@@ -1,5 +1,5 @@
 <%# Puppies can be anything, this is esentially the name of the channel streaming %>
-<%= turbo_stream_from "puppies" %>
+<%= turbo_stream_from (current_company.name + "puppies") %>
 
 <main class="container">
   <div class="header">
