@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+today:
+  quote: first
+  date: 2024-03-13
+
+next_week:
+  quote: first
+  date: 2024-03-18
