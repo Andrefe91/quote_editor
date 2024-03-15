@@ -1,2 +1,10 @@
-<h1>LineItemDates#edit</h1>
-<p>Find me in app/views/line_item_dates/edit.html.erb</p>
+<main class="container">
+    <%= link_to sanitize("&larr; Back to quote"), quote_path(@quote) %>
+
+    <div class="header">
+        <h1>Edit date</h1>
+    </div>
+
+    <%= render "form", quote: @quote, line_item_date: @line_item_date %>
+    
+</main>
