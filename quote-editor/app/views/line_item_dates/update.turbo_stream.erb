@@ -1,12 +1,13 @@
-<%# Step 1: remove the form from the Quote#index page %>
-<%= turbo_stream.update LineItemDate.new, "" %>
+<%# Step 1 - Remove the changed date/form %>
+<%= turbo_stream.remove @line_item_date %>
 
-<%# Step 2: add the date at the right place %>
+<%# Step 2 - Insert the updated date at the correct position %>
 <% if previous_date = @line_item_date.previous_date %>
     <%= turbo_stream.after previous_date do %>
         <%= render @line_item_date, quote: @quote %>
     <% end %>
 <% else %>
+    <%# Remember, the "line item dates" refers to the whole dates list %>
     <%= turbo_stream.prepend "line_item_dates" do %>
         <%= render @line_item_date, quote: @quote %>
     <% end %>
