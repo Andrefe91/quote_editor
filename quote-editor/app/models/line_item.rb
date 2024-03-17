@@ -10,4 +10,9 @@ class LineItem < ApplicationRecord
   # With the delegate method, the two following lines are equivalent:
   # line_item.line_item_date.quote
   # line_item.quote
+
+
+  def total_price
+    quantity * unit_price
+  end
 end

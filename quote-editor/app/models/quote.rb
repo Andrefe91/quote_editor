@@ -4,6 +4,7 @@ class Quote < ApplicationRecord
 
   belongs_to :company
   has_many :line_item_dates, dependent: :destroy
+  has_many :line_items, through: :line_item_dates
 
   scope :ordered, -> { order(created_at: :desc)}
 
@@ -24,4 +25,8 @@ class Quote < ApplicationRecord
   #Syntactic sugar for the three callbacks from before:
   broadcasts_to ->(quote) { quote.company.name + "puppies"}, inserts_by: :prepend
   #The array [quote.company, "puppies"] is used to uniquely identify the broadcasting channel.
+
+  def total_price
+    line_items.sum(&:total_price)
+  end
 end
